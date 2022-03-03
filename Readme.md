@@ -1,4 +1,4 @@
-#How to use this project
+# How to use this project
 * Create a virtual environment in the root directory
 > python -m venv nameofenv
 
