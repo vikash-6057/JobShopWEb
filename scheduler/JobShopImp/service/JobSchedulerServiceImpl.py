@@ -1,6 +1,6 @@
 from scheduler.JobShopImp.ion import Job,EDF
 from functools import cmp_to_key
-
+from io import StringIO
 import matplotlib.pyplot as plt
 import random
 class JobSchedulerServiceImpl():
@@ -34,8 +34,13 @@ class JobSchedulerServiceImpl():
                 
 
         plt.title(f_name)
+        imageData = StringIO()
+        fig.savefig(imageData,format='svg')
+        imageData.seek(0)
+        data = imageData.getvalue()
+        return data
         # plt.legend()
-        plt.show()
+        # plt.show()
 
     
     def assignThreadsToJobs(self, threadNo:int, job:list):
@@ -81,7 +86,7 @@ class JobSchedulerServiceImpl():
                 print(name, end=" ")
             print()
 
-        self.plot_gantt(threadNo,machine_thread,f_name,job_name_legend)
+        return self.plot_gantt(threadNo,machine_thread,f_name,job_name_legend)
 
     def shortestJobFirst(self, threadNo:int, job:list):
         print("Shortest Job First : ")
@@ -94,14 +99,14 @@ class JobSchedulerServiceImpl():
             return j1.getDuration()-j2.getDuration()
         jobs.sort(key=cmp_to_key(comparator))
         threads,machine_thread,job_name_legend = self.assignThreadsToJobs(threadNo, jobs)
-        self.displayScheduledJobs(threads,machine_thread,f_name,threadNo,job_name_legend)
+        return self.displayScheduledJobs(threads,machine_thread,f_name,threadNo,job_name_legend)
 
     def firstComeFirstServe(self, threadNo:int, job):
         print("First Come First Serve : ")
         jobs = job
         f_name = "First Come First Serve "
         threads,machine_thread,job_name_legend = self.assignThreadsToJobs(threadNo, jobs)
-        self.displayScheduledJobs(threads,machine_thread,f_name,threadNo,job_name_legend)
+        return self.displayScheduledJobs(threads,machine_thread,f_name,threadNo,job_name_legend)
 
     def fixedPriorityScheduling(self, threadNo:int, job:list):
         print("Fixed Priority Scheduling : ")
@@ -116,7 +121,7 @@ class JobSchedulerServiceImpl():
             return int(j1.getPriority()-j2.getPriority())
         jobs.sort(key=cmp_to_key(comparator))
         threads,machine_thread,job_name_legend = self.assignThreadsToJobs(threadNo, jobs)
-        self.displayScheduledJobs(threads,machine_thread,f_name,threadNo,job_name_legend)
+        return self.displayScheduledJobs(threads,machine_thread,f_name,threadNo,job_name_legend)
 
     def assignThreadsToJobsForEdf(self, threadNo:int, jobs:list):
         threads = dict()
@@ -164,7 +169,7 @@ class JobSchedulerServiceImpl():
             for name in threads[entry].getJobNames():
                 print(name, end=" ")
             print()
-        self.plot_gantt(threadNo,machine_thread,f_name,job_name_legend)
+        return self.plot_gantt(threadNo,machine_thread,f_name,job_name_legend)
 
     def earliestDeadlineFirst(self, threadNo:int, job:list):
         print("Earliest Deadline First : ")
@@ -182,4 +187,4 @@ class JobSchedulerServiceImpl():
         
         jobs.sort(key=cmp_to_key(comparator))
         threads,machine_thread,job_name_legend = self.assignThreadsToJobsForEdf(threadNo, jobs)
-        self.displayScheduledJobsForEdf(threads,machine_thread,f_name,threadNo,job_name_legend)
+        return self.displayScheduledJobsForEdf(threads,machine_thread,f_name,threadNo,job_name_legend)

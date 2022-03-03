@@ -1,151 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
- <meta charset="UTF-8">
-    <title>Project</title>
-</head>
-<style>
-    .content {
-      max-width: 500px;
-      margin: auto;
-    }
-    .center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-.dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
+	<head>
+		<meta charset="UTF-8" />
+		<title>Project</title>
+	</head>
+	{% comment %}
+	<style>
+		.content {
+			max-width: 500px;
+			margin: auto;
+		}
+		.center {
+			margin: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+		.dropbtn {
+			background-color: #3498db;
+			color: white;
+			padding: 16px;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+		}
 
+		/* Dropdown button on hover & focus */
+		.dropbtn:hover,
+		.dropbtn:focus {
+			background-color: #2980b9;
+		}
 
+		/* The container <div> - needed to position the dropdown content */
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-}
+		/* Dropdown Content (Hidden by Default) */
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f1f1f1;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			z-index: 1;
+		}
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+		/* Links inside the dropdown */
+		.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+		#footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 60px; /* Height of the footer */
+			background: rgb(82, 142, 172);
+		}
+	</style>
+	{% endcomment %}
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
+	<body>
+		{% comment %} All figures {% endcomment %}
+		<div>{{sjf|safe}} {{fcfs|safe}} {{fps|safe}} {{edf|safe}}</div>
+		<!-- Footer -->
+		<div class="page-footer font-small cyan darken-3" id="footer">
+			<!-- Footer Elements -->
+			<div class="container">
+				<!-- Grid row-->
+				<div class="row">
+					<!-- Grid column -->
+					<div class="col-md-12 py-5">
+						<div class="mb-5 flex-center">
+							<!--Facebook-->
+							<button type="button" class="btn btn-fb">
+								<i class="fab fa-facebook-f pr-1"></i> Facebook
+							</button>
+							<!--Twitter-->
+							<button type="button" class="btn btn-tw">
+								<i class="fab fa-twitter pr-1"></i> Twitter
+							</button>
+							<!--Google +-->
+							<button type="button" class="btn btn-gplus">
+								<i class="fab fa-google-plus-g pr-1"></i> Google +
+							</button>
+							<!--Linkedin-->
+							<button type="button" class="btn btn-li">
+								<i class="fab fa-linkedin-in pr-1"></i> Linkedin
+							</button>
+							<!--Instagram-->
+							<button type="button" class="btn btn-ins">
+								<i class="fab fa-instagram pr-1"></i> Instagram
+							</button>
+							<!--Pinterest-->
+							<button type="button" class="btn btn-pin">
+								<i class="fab fa-pinterest pr-1"></i> Pinterest
+							</button>
+							<!--Stack Overflow-->
+							<button type="button" class="btn btn-so">
+								<i class="fab fa-stack-overflow pr-1"></i> Stack Overflow
+							</button>
+							<!--Youtube-->
+							<button type="button" class="btn btn-yt">
+								<i class="fab fa-youtube pr-1"></i> Youtube
+							</button>
+							<!--Github-->
+							<button type="button" class="btn btn-git">
+								<i class="fab fa-github pr-1"></i> Github
+							</button>
+							<!--Email-->
+							<button type="button" class="btn btn-email">
+								<i class="fas fa-envelope pr-1"></i> Email
+							</button>
+							<!--Reddit-->
+							<button type="button" class="btn btn-reddit">
+								<i class="fab fa-reddit-alien pr-1"></i> Reddit
+							</button>
+							<!--WhatsApp-->
+							<button type="button" class="btn btn-whatsapp">
+								<i class="fab fa-whatsapp pr-1"></i> Whatsapp
+							</button>
+						</div>
+					</div>
+					<!-- Grid column -->
+				</div>
+				<!-- Grid row-->
+			</div>
+			<!-- Footer Elements -->
 
-#footer {
-   position:absolute;
-   bottom:0;
-   width:100%;
-   height:60px;   /* Height of the footer */
-   background:rgb(82, 142, 172);
-}
-</style>
-
-<body>
-    <div class="center">
-    <div class="content">
-    
-    <h1>Job Scheduler</h1><br>
-     <form action="/action_page.php">
-        <input type="file" id="myFile" name="filename">
-        <br>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="/">Link 1</a>
-              <a href="/admin">Link 2</a>
-              <a href="">Link 3</a>
-            </div>
-          </div>
-        <input type="submit">
-     </form>
-   
-    </div>
-    
-    
-    </div>
-   <!-- Footer -->
-<div class="page-footer font-small cyan darken-3" id="footer">
-
-    <!-- Footer Elements -->
-    <div class="container">
-  
-      <!-- Grid row-->
-      <div class="row">
-  
-        <!-- Grid column -->
-        <div class="col-md-12 py-5">
-          <div class="mb-5 flex-center">
-  
-            <!--Facebook-->
-<button type="button" class="btn btn-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</button>
-<!--Twitter-->
-<button type="button" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i> Twitter</button>
-<!--Google +-->
-<button type="button" class="btn btn-gplus"><i class="fab fa-google-plus-g pr-1"></i> Google +</button>
-<!--Linkedin-->
-<button type="button" class="btn btn-li"><i class="fab fa-linkedin-in pr-1"></i> Linkedin</button>
-<!--Instagram-->
-<button type="button" class="btn btn-ins"><i class="fab fa-instagram pr-1"></i> Instagram</button>
-<!--Pinterest-->
-<button type="button" class="btn btn-pin"><i class="fab fa-pinterest pr-1"></i> Pinterest</button>
-<!--Stack Overflow-->
-<button type="button" class="btn btn-so"><i class="fab fa-stack-overflow pr-1"></i> Stack Overflow</button>
-<!--Youtube-->
-<button type="button" class="btn btn-yt"><i class="fab fa-youtube pr-1"></i> Youtube</button>
-<!--Github-->
-<button type="button" class="btn btn-git"><i class="fab fa-github pr-1"></i> Github</button>
-<!--Email-->
-<button type="button" class="btn btn-email"><i class="fas fa-envelope pr-1"></i> Email</button>
-<!--Reddit-->
-<button type="button" class="btn btn-reddit"><i class="fab fa-reddit-alien pr-1"></i> Reddit</button>
-<!--WhatsApp-->
-<button type="button" class="btn btn-whatsapp"><i class="fab fa-whatsapp pr-1"></i> Whatsapp</button>
-          </div>
-        </div>
-        <!-- Grid column -->
-  
-      </div>
-      <!-- Grid row-->
-  
-    </div>
-    <!-- Footer Elements -->
-  
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-  
-</div>
-  <!-- Footer -->
-  
-    </body>
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">
+				© 2020 Copyright:
+				<a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+			</div>
+			<!-- Copyright -->
+		</div>
+		<!-- Footer -->
+	</body>
 </html>
