@@ -1,4 +1,4 @@
-from ion import Job, EDF
+from scheduler.JobShopImp.ion import Job,EDF
 from functools import cmp_to_key
 
 import matplotlib.pyplot as plt
