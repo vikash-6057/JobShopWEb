@@ -1,8 +1,11 @@
 
+from django import views
 from django.contrib import admin
 from django.urls import path
-from .views import index
+from .views import index,upload,show_data
 
 urlpatterns = [
-    path('', index),
+    path('', upload,name='upload'),
+    path('graph',index,name='home'),
+    path('success',show_data,name='success'),
 ]

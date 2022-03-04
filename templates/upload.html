@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Project</title>
+	</head>
+	<body>
+		{% comment %} POST data to Database {% endcomment %}
+		<h2>Upload a '.txt' file</h2>
+		<form method="POST" action='' enctype="multipart/form-data">
+			{% csrf_token %}
+            {{form.as_p}}
+			<button type='submit' method='POST'>
+				Upload
+			</button>
+        </form>
+
+	</body>
+</html>
