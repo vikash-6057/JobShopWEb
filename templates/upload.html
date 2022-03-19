@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Project</title>
-	</head>
-	<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+		<div style="text-align:center">
 		{% comment %} POST data to Database {% endcomment %}
 		<h2>Upload a '.txt' file</h2>
 		<form method="POST" action='' enctype="multipart/form-data">
@@ -14,6 +13,6 @@
 				Upload
 			</button>
         </form>
+	</div>
 
-	</body>
-</html>
+{% endblock content %}

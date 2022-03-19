@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Project</title>
-	</head>
-	<body>
-		<h2>File uploaded sucessfully...</h2>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">	<h2>File uploaded sucessfully...</h2>
 		<pre>{{file}}</pre>
 		<button type="button"><a href='{% url 'home' %}'> Show Graph</button>
-	</body>
-</html>
+    <br>
+</div>
+
+{% endblock content %}
+
