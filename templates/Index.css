@@ -1,5 +1,10 @@
 body {
   background-color: powderblue;
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center;
+  min-height:100vh;
+  
 }
 h1 {
   color: blue;
