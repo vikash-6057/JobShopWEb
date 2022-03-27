@@ -7,4 +7,4 @@
 * install the requirements
 >pip install -r requirements.txt
 * start the server
->```python manage.py runserver```
+>python manage.py runserver
