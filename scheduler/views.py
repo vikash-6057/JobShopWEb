@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from .models import JobModel
 from .forms import JobForm
@@ -40,12 +41,15 @@ def index(request):
     return render(request, 'Index.html',context)
 
 def show_data(request):
-    job_data = JobModel.objects.all()[:1]
-    input_file_name = job_data[0].job.path
-    input_file = open(input_file_name,"r")
-    file = input_file.read()
-    input_file.close()
-    return render(request,'success.html',{'file':file})
+    job_data = JobModel.objects.all()
+    if job_data:
+        job_data = job_data[:1]
+        input_file_name = job_data[0].job.path
+        input_file = open(input_file_name,"r")
+        file = input_file.read()
+        input_file.close()
+        return render(request,'success.html',{'file':file})
+    return HttpResponse('Upload File')
 
 def upload(request):
     if request.method=='POST':
