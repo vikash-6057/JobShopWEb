@@ -2,63 +2,69 @@
 {% load static %}
 {% block content %}
 <style>
-	.container{
-		{% comment %} background-image:url("{% static 'images/background.jpg' %}"); {% endcomment %}
-		background-color: #f5f5f5;
-		opacity:0.8;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-size: cover;
-		font-family: 'Open Sans', sans-serif;
-		margin-top: 20px;
-		margin-bottom:20px;
-		{% comment %} text color {% endcomment %}
-		color: #03045e;
-		{% comment %} font size {% endcomment %}
-		font-size: 16px;
-		{% comment %} font-weight {% endcomment %}
-		font-weight: 600;
+    .container{
+        {% comment %} background-image:url("{% static 'images/background.jpg' %}"); {% endcomment %}
+        background-color: #f5f5f5;
+        opacity:0.8;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Open Sans', sans-serif;
+        margin-top: 20px;
+        margin-bottom:20px;
+        {% comment %} text color {% endcomment %}
+        color: #03045e;
+        {% comment %} font size {% endcomment %}
+        font-size: 16px;
+        {% comment %} font-weight {% endcomment %}
+        font-weight: 600;
 
-	}
+    }
 </style>
 <div class="container row-cols-1">
-	<div  class="container-fluid"
+    <div  class="container-fluid"
 >
-		<br>
-		<br>
-		<h3>Instructions to use:</h3>
-		<p>
-			<h4>The input must contain the following data in a text <i>(.txt)</i> file format.</h4>
-			<h5>The Number of machines Followed by for each Job:-</h5>
-			<ul>
-			<li>Job Name</li>
-			<li>Duration: time taken for job completion</li>
-			<li>Priority: priority of the job. P0>P1>P2</li>
-			<li>Deadline: Expiry time after which job should not be run
-					(The clock starts from 0 and deadline is the actual clock time).</li>
-			<li>UserType: Type of user who has initiated the job, Precedence of users Root>Admin>User</li>
-		</ul></p>
-	</div>
+        <br>
+        <br>
+        <h3>Instructions to use:</h3>
+        <p>
+            <h5>The input must contain the following data in a text <i>(.txt)</i> file format.</h5>
+            <ul>
+            <li>Job Name: The name of the Job.</li>
+            <li>Duration: The time required for the job completion</li>
+            <li>Priority: The priority of the job. Example: 0, 1 or 2 where P0>P1>P2</li>
+            <li>Deadline: Expiry time after which job should not be run.
+                    (The clock starts from 0 and deadline is the actual clock time).</li>
+            <li>UserType: Type of user who has initiated the job, Precedence of users Root(0)>Admin(1)>User(2)</li>
+        </ul></p>
+        <h6>Note: The Number of machines is entered in Integer format.</h6>
+        <h3>Assumptions:</h3>
+        <p>
+            <ul>
+            <li>All the jobs arrive at the same time.</li>
+            </ul>
+        </p>
+    </div>
 
 
-	<br>
-	<div class="container" style="text-align:center">
-		{% comment %} POST data to Database {% endcomment %}
-		<h2>Upload a '.txt' file</h2>
-		<br>
-		<form method="POST" action='' enctype="multipart/form-data">
-			{% csrf_token %}
+    <br>
+    <div class="container" style="text-align:center">
+        {% comment %} POST data to Database {% endcomment %}
+        <h2>Upload a '.txt' file</h2>
+        <br>
+        <form method="POST" action='' enctype="multipart/form-data">
+            {% csrf_token %}
             {{form.as_p}}
-			<br>
-			<br>
-			<button  class="btn btn-primary" type='submit' method='POST'>
-				Upload
-			</button>
-			<br>
-			<br>
+            <br>
+            <br>
+            <button  class="btn btn-primary" type='submit' method='POST'>
+                Upload
+            </button>
+            <br>
+            <br>
         </form>
-	</div>
+    </div>
 <br>
 </div>
 {% endblock content %}
