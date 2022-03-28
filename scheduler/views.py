@@ -11,8 +11,8 @@ def index(request):
     jobScheduler = JobSchedulerServiceImpl()
     jobs = list()
     # Note: Number of machine is fixed(we can change it)
-    no_machines = 2
-    job_data = JobModel.objects.all()[:1]
+    no_machines = JobModel.objects.all().order_by('-id')[:1][0].number_of_machine
+    job_data = JobModel.objects.all().order_by('-id')[:1]
     input_file_name = job_data[0].job.path
     input_file = open(input_file_name,"r")
     for line in input_file:
@@ -41,14 +41,15 @@ def index(request):
     return render(request, 'Index.html',context)
 
 def show_data(request):
-    job_data = JobModel.objects.all()
+    job_data = JobModel.objects.all().order_by('-id')
+    no_machines = JobModel.objects.all().order_by('-id')[:1][0].number_of_machine
     if job_data:
         job_data = job_data[:1]
         input_file_name = job_data[0].job.path
         input_file = open(input_file_name,"r")
         file = input_file.read()
         input_file.close()
-        return render(request,'success.html',{'file':file})
+        return render(request,'success.html',{'file':file,'no_machines':no_machines})
     return HttpResponse('Upload File')
 
 def upload(request):
